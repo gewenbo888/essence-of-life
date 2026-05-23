@@ -29,14 +29,6 @@ export const metadata: Metadata = {
     languages: { en: "/", "zh-CN": "/", "x-default": "/" },
   },
   openGraph: {
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: "The Essence of Life · 生命的本质 — Life is more than carbon chemistry",
-      },
-    ],
     title: TITLE_EN,
     description:
       "Life may be the universe organizing information against entropy. A cinematic journey through biology, consciousness, AI and cosmology — humanity rediscovering itself through the universe.",
@@ -47,7 +39,6 @@ export const metadata: Metadata = {
     alternateLocale: ["zh_CN"],
   },
   twitter: {
-    images: ["/twitter-image.png"],
     card: "summary_large_image",
     title: TITLE_EN,
     description:
