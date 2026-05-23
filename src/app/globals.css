@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void: #04060f;
+  color-scheme: dark;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #04060f;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: var(--font-serif, "Spectral"), Georgia, serif;
+}
+
+/* guaranteed deep-space base, behind the WebGL canvas (-z-10) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -20;
+  pointer-events: none;
+  background:
+    radial-gradient(85% 60% at 50% -5%, rgba(36,82,168,0.28), transparent 60%),
+    radial-gradient(70% 55% at 82% 28%, rgba(126,72,224,0.20), transparent 60%),
+    radial-gradient(65% 55% at 14% 72%, rgba(20,150,128,0.16), transparent 62%),
+    radial-gradient(60% 60% at 50% 108%, rgba(150,110,255,0.18), transparent 60%),
+    #04060f;
+}
+
+::selection {
+  background: rgba(43, 212, 159, 0.28);
+  color: #f6f8ff;
+}
+
+/* Thin cosmic scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #04060f;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #19a97e, #0b9fd1, #6d3df0);
+  border-radius: 9px;
+}
+
+/* ---------- Typographic primitives ---------- */
+.font-display {
+  font-family: "Cormorant Garamond", ui-serif, Georgia, serif;
+}
+.kicker {
+  font-family: "Space Grotesk", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.42em;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+.mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+.zh {
+  font-family: "Noto Serif SC", serif;
+}
+
+/* ---------- Gradient text utilities ---------- */
+.text-aurora {
+  background: linear-gradient(110deg, #8cf3d2 0%, #5fe0f7 38%, #b394ff 74%, #fae2b3 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 14s linear infinite;
+}
+.text-bio {
+  background: linear-gradient(120deg, #8cf3d2, #2bd49f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-ion {
+  background: linear-gradient(120deg, #9eeefb, #22cdf0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-plasma {
+  background: linear-gradient(120deg, #d3c0ff, #9166ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gold {
+  background: linear-gradient(120deg, #fae2b3, #eab85c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Glass surfaces ---------- */
+.glass {
+  background: linear-gradient(
+    160deg,
+    rgba(20, 28, 54, 0.5) 0%,
+    rgba(8, 12, 26, 0.62) 100%
+  );
+  backdrop-filter: blur(16px) saturate(135%);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  border: 1px solid rgba(150, 175, 230, 0.1);
+}
+.glass-soft {
+  background: rgba(10, 14, 30, 0.42);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(150, 175, 230, 0.08);
+}
+
+.hairline {
+  border-color: rgba(150, 175, 230, 0.12);
+}
+
+/* ---------- Vignette / film grain feel ---------- */
+.vignette::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 90% at 50% 22%,
+    transparent 40%,
+    rgba(2, 3, 8, 0.55) 100%
+  );
+  z-index: 1;
+}
+
+/* Reveal helper used by the framer-motion fallback */
+.will-reveal {
+  opacity: 0;
+}
+
+/* Bulletproof hero entrance — pure CSS, runs on mount, resting state visible */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  opacity: 1;
+  animation: fadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Soft horizontal rule */
+.rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(150, 175, 230, 0.25),
+    transparent
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .text-aurora {
+    animation: none;
+  }
+  .fade-up {
+    animation: none;
+  }
+}
